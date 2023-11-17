@@ -1,0 +1,89 @@
+﻿@model BookStore.Models.Sach
+
+@{
+ViewData["Title"] = "Thêm sách";
+}
+
+<div class="card">
+	<h5 class="card-header">@ViewData["Title"]</h5>
+	<div class="card-body">
+		<form asp-action="Create"   enctype="multipart/form-data">
+
+		<div class="mb-3">
+			<label asp-for="NhaSanXuatID" class="control-label"> Nhà xuất bản </label>
+			<select asp-for="NhaSanXuatID" class ="form-control" asp-items="ViewBag.NhaSanXuatID">
+				<option value="">-- Chọn --</option>
+			</select>
+			<span asp-validation-for="NhaSanXuatID" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="TheLoaiID" class="control-label"> Thể loại </label>
+			<select asp-for="TheLoaiID" class="form-control" asp-items="ViewBag.TheLoaiID">
+				<option value="">-- Chọn --</option>
+			</select>
+			<span asp-validation-for="TheLoaiID" class="text-danger"></span>
+		</div>
+
+			@*<div class="mb-3">
+				<label asp-for="TacGiaID" class="control-label"> Tác giả </label>
+				<select asp-for="TacGiaID" class="form-control" asp-items="ViewBag.TacGiaID">
+					<option value="">-- Chọn --</option>
+				</select>
+				<span asp-validation-for="TacGiaID" class="text-danger"></span>
+			</div>*@
+
+		<div class="mb-3">
+			<label asp-for="TenSach" class="control-label"> Tên sách </label>
+			<input asp-for="TenSach" class="form-control" />
+			<span asp-validation-for="TenSach" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="DonGia" class="control-label"> Đơn giá </label>
+			<input asp-for="DonGia" class="form-control" />
+			<span asp-validation-for="DonGia" class="text-danger"></span>
+		</div>
+
+			<div class="mb-3">
+				<label asp-for="DuLieuHinhAnh" class="control-label"></label>
+				<input asp-for="DuLieuHinhAnh" accept="image/jpeg,image/gif,image/png" class="form-control" />
+				<span asp-validation-for="DuLieuHinhAnh" class="text-danger"></span>
+			</div>
+
+		<div class="mb-3">
+			<label asp-for="SoLuong" class="control-label"> Số lượng </label>
+			<input asp-for="SoLuong" class="form-control" />
+			<span asp-validation-for="SoLuong" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="MoTa" class="control-label"> Mô tả </label>
+				<textarea asp-for="MoTa" class="form-control"></textarea>
+			<span asp-validation-for="MoTa" class="text-danger"></span>
+		</div>
+
+		<div class="mb-0">
+			<button type="submit" class="btn btn-primary"><i class="fa-light fa-floppy-disk"></i> Thêm mới </button> hoặc <a asp-action="Index">Quay về danh sách</a>
+		</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+	<script src="~/lib/ckeditor5/ckeditor.js"></script>
+	<script>
+		ClassicEditor.create(document.querySelector('#MoTa'), {
+			licenseKey: '',
+		}).then(editor => {
+			window.editor = editor;
+		}).catch(error => {
+			console.error(error);
+		});
+	</script>
+
+}
