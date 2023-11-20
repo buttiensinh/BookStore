@@ -28,8 +28,8 @@
 				<th @Html.DisplayNameFor(model => model.TheLoai.TenTheLoai)> Tên thể loại </th>
 				<th @Html.DisplayNameFor(model => model.NhaSanXuat.TenNhaSanXuat)> Tên nhà xuất bản </th>
 				<th @Html.DisplayNameFor(model => model.TenSach)> Tên sách </th>
-				@*<th @Html.DisplayNameFor(model => model.TacGia.TenTacGia)> Tác giả </th>
-				<th @Html.DisplayNameFor(model => model.MoTa)> Mô tả </th>*@
+				<th @Html.DisplayNameFor(model => model.TacGia.TenTacGia)> Tên Tác giả </th>
+				@*<th @Html.DisplayNameFor(model => model.MoTa)> Mô tả </th>*@
 				<th @Html.DisplayNameFor(model => model.DonGia)> Đơn giá </th>
 				<th @Html.DisplayNameFor(model => model.SoLuong)> Số lượng </th>
 				
@@ -97,12 +97,12 @@
 			},
 			columnDefs: [
 				{
-					targets: [1, 7, 8],
-					className: 'text-center' // Cột 1 (Hình ảnh), 7 (Sửa), 8 (Xóa) canh giữa
+					targets: [1, 8, 9],
+					className: 'text-center' // Cột 1 (Hình ảnh), 8 (Sửa), 9(Xóa) canh giữa
 				},
 				{
-					targets: [5, 6],
-					className: 'text-end' // Cột 5 (Số lượng), 6(Đơn giá) canh phải.
+					targets: [6, 7],
+					className: 'text-end' // Cột 6 (Số lượng), 7(Đơn giá) canh phải.
 				}
 			],
 			columns: [
@@ -138,21 +138,26 @@
 					// Cột 4: Tên sản phẩm
 					data: 'TenSach',
 					name: 'TenSach'
-				},	
+				},
 				{
 					// Cột 5: Số lượng
+					data: 'TenTacGia',
+					name: 'TenTacGia'
+				},
+				{
+					// Cột 6: Số lượng
 					data: 'SoLuong',
 					name: 'SoLuong',
 					render: DataTable.render.number(null, null, 0)
 				},
 				{
-					// Cột 6: Đơn giá
+					// Cột 7: Đơn giá
 					data: 'DonGia',
 					name: 'DonGia',
 					render: DataTable.render.number(null, null, 0)
 				},
 				{
-					// Cột 7: Sửa
+					// Cột 8: Sửa
 					data: null,
 					name: null,
 					sortable: false, // Không cho sắp xếp
@@ -161,7 +166,7 @@
 					}
 				},
 				{
-					// Cột 8: Xóa
+					// Cột 9: Xóa
 					data: null,
 					name: null,
 					sortable: false, // Không cho sắp xếp

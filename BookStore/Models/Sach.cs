@@ -18,8 +18,8 @@ namespace BookStore.Models
         [Required(ErrorMessage = "Tên nhà xuất bản không được bỏ trống!")]
         public int NhaSanXuatID { get; set; }
 
-		//[Required(ErrorMessage = "Tên tác giả không được bỏ trống!")]
-		//public int TacGiaID { get; set; }
+		[Required(ErrorMessage = "Tên tác giả không được bỏ trống!")]
+		public int TacGiaID { get; set; }
 
 
 		[StringLength(250)]
@@ -60,7 +60,7 @@ namespace BookStore.Models
         public ICollection<DonHang_ChiTiet>? DonHang_ChiTiet { get; set; }
         public TheLoai? TheLoai { get; set; }
         public NhaSanXuat? NhaSanXuat { get; set; }
-		//public TacGia? TacGia { get; set; }
+		public TacGia? TacGia { get; set; }
 
     }
 }

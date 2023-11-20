@@ -55,7 +55,7 @@ namespace BookStore.Areas.Admin.Controllers
                                AnhBia = r.AnhBia,
                                TenTheLoai = r.TheLoai.TenTheLoai,
                                TenNhaSanXuat = r.NhaSanXuat.TenNhaSanXuat,
-                               //TenTacGia = r.TacGia.TenTacGia,
+                               TenTacGia = r.TacGia.TenTacGia,
                                TenSach = r.TenSach,
                                SoLuong = r.SoLuong,
                                DonGia = r.DonGia
@@ -71,7 +71,7 @@ namespace BookStore.Areas.Admin.Controllers
                 {
                     sach = sach.Where(r => r.TenTheLoai.Contains(searchValue) ||
                     r.TenNhaSanXuat.Contains(searchValue) ||
-					//r.TenTacGia.Contains(searchValue) ||
+					r.TenTacGia.Contains(searchValue) ||
 					r.TenSach.Contains(searchValue) ||
                     r.SoLuong.ToString().Contains(searchValue) ||
                     r.DonGia.ToString().Contains(searchValue));
@@ -105,7 +105,7 @@ public async Task<IActionResult> Details(int? id)
             var sach = await _context.Sach
                 .Include(s => s.NhaSanXuat)
                 .Include(s => s.TheLoai)
-			    //.Include(s => s.TacGia)
+			    .Include(s => s.TacGia)
 				.FirstOrDefaultAsync(m => m.ID == id);
             if (sach == null)
             {
@@ -120,7 +120,7 @@ public async Task<IActionResult> Details(int? id)
         {
             ViewData["NhaSanXuatID"] = new SelectList(_context.NhaSanXuat, "ID", "TenNhaSanXuat");
             ViewData["TheLoaiID"] = new SelectList(_context.TheLoai, "ID", "TenTheLoai");
-			//ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TenTacGia");
+			ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TenTacGia");
 			return View();
         }
 
@@ -129,7 +129,7 @@ public async Task<IActionResult> Details(int? id)
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,TheLoaiID,NhaSanXuatID,TenSach,DonGia,DuLieuHinhAnh,SoLuong,MoTa")] Sach sach)
+        public async Task<IActionResult> Create([Bind("ID,TheLoaiID,NhaSanXuatID,TacGiaID,TenSach,DonGia,DuLieuHinhAnh,SoLuong,MoTa")] Sach sach)
         {
             if (ModelState.IsValid)
             {
@@ -161,7 +161,7 @@ public async Task<IActionResult> Details(int? id)
             }
             ViewData["NhaSanXuatID"] = new SelectList(_context.NhaSanXuat, "ID", "TenNhaSanXuat", sach.NhaSanXuatID);
             ViewData["TheLoaiID"] = new SelectList(_context.TheLoai, "ID", "TenTheLoai", sach.TheLoaiID);
-			//ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TenTacGia", sach.TacGiaID);
+			ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TenTacGia", sach.TacGiaID);
 			return View(sach);
         }
 
@@ -180,7 +180,7 @@ public async Task<IActionResult> Details(int? id)
             }
             ViewData["NhaSanXuatID"] = new SelectList(_context.NhaSanXuat, "ID", "TenNhaSanXuat", sach.NhaSanXuatID);
             ViewData["TheLoaiID"] = new SelectList(_context.TheLoai, "ID", "TenTheLoai", sach.TheLoaiID);
-			//ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TenTacGia", sach.TacGiaID);
+			ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TenTacGia", sach.TacGiaID);
 			return View(sach);
         }
 
@@ -189,7 +189,7 @@ public async Task<IActionResult> Details(int? id)
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,TheLoaiID,NhaSanXuatID,TenSach,DonGia,DuLieuHinhAnh,SoLuong,MoTa")] Sach sach)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,TheLoaiID,NhaSanXuatID,TacGiaID,TenSach,DonGia,DuLieuHinhAnh,SoLuong,MoTa")] Sach sach)
         {
             if (id != sach.ID)
             {
@@ -249,7 +249,7 @@ public async Task<IActionResult> Details(int? id)
             }
             ViewData["NhaSanXuatID"] = new SelectList(_context.NhaSanXuat, "ID", "TenNhaSanXuat", sach.NhaSanXuatID);
             ViewData["TheLoaiID"] = new SelectList(_context.TheLoai, "ID", "TheLoai", sach.TheLoaiID);
-			//ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TacGia", sach.TacGiaID);
+			ViewData["TacGiaID"] = new SelectList(_context.TacGia, "ID", "TacGia", sach.TacGiaID);
 			return View(sach);
         }
 
@@ -264,7 +264,7 @@ public async Task<IActionResult> Details(int? id)
             var sach = await _context.Sach
                 .Include(s => s.NhaSanXuat)
                 .Include(s => s.TheLoai)
-				//.Include(s => s.TacGia)
+				.Include(s => s.TacGia)
 				.FirstOrDefaultAsync(m => m.ID == id);
             if (sach == null)
             {
