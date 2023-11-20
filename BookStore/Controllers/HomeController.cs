@@ -18,6 +18,7 @@ namespace BookStore.Controllers
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+		//thu
 		// GET: Index
 		public IActionResult Index()
 		{
