@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
 using BC = BCrypt.Net.BCrypt;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Controllers
 {
@@ -18,11 +19,12 @@ namespace BookStore.Controllers
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
-		//thu1
 		// GET: Index
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
+			return _context.TheLoai != null ?
+			View(await _context.TheLoai.Include(s => s.Sach).ToListAsync()) :
+			Problem("Entity set 'BookStoreDbContext.TheLoai' is null.");
 		}
 		// GET: Login
 		[AllowAnonymous]

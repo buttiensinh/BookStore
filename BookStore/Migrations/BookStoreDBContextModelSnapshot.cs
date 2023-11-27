@@ -87,6 +87,33 @@ namespace BookStore.Migrations
                     b.ToTable("DonHang_ChiTiet", (string)null);
                 });
 
+            modelBuilder.Entity("BookStore.Models.GioHang", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("SachID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoLuongTrongGio")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TenDangNhap")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("ThoiGian")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("SachID");
+
+                    b.ToTable("GioHang", (string)null);
+                });
+
             modelBuilder.Entity("BookStore.Models.NguoiDung", b =>
                 {
                     b.Property<int>("ID")
@@ -102,6 +129,11 @@ namespace BookStore.Migrations
                     b.Property<string>("DienThoai")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("HoVaTen")
                         .IsRequired()
@@ -329,6 +361,17 @@ namespace BookStore.Migrations
                         .IsRequired();
 
                     b.Navigation("DonHang");
+
+                    b.Navigation("Sach");
+                });
+
+            modelBuilder.Entity("BookStore.Models.GioHang", b =>
+                {
+                    b.HasOne("BookStore.Models.Sach", "Sach")
+                        .WithMany()
+                        .HasForeignKey("SachID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Sach");
                 });

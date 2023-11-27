@@ -14,7 +14,8 @@ namespace BookStore.Models
         public DbSet<TheLoai> TheLoai { get; set; }
         public DbSet<TinhTrang> TinhTrang { get; set; }
         public DbSet<DonHang_ChiTiet> DonHang_ChiTiet { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		public DbSet<GioHang> GioHang { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DonHang>().ToTable("DonHang");
             modelBuilder.Entity<NhaSanXuat>().ToTable("NhaSanXuat");
@@ -25,6 +26,7 @@ namespace BookStore.Models
             modelBuilder.Entity<TheLoai>().ToTable("TheLoai");
             modelBuilder.Entity<TinhTrang>().ToTable("TinhTrang");
             modelBuilder.Entity<DonHang_ChiTiet>().ToTable("DonHang_ChiTiet");
-        }
+			modelBuilder.Entity<GioHang>().ToTable("GioHang");
+		}
     }
 }

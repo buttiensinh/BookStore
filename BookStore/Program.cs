@@ -1,3 +1,4 @@
+﻿using BookStore.Logic;
 using BookStore.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,16 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 });
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+	options.Cookie.Name = "BookStore.Session";
+	options.IdleTimeout = TimeSpan.FromMinutes(15);
+});
+
+builder.Services.AddTransient<IMailLogic, MailLogic>();
+// Lấy thông tin cấu hình trong tập tin appsettings.json và gán vào đối tượng MailSettings
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,6 +47,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 app.MapControllerRoute(name: "adminareas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",

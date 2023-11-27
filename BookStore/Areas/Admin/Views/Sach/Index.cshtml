@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BookStore.Models.Sach>
 
 @{
-	ViewData["Title"] = "Sách";
+	ViewData["Title"] = "Sản phẩm";
 } 
 
 @section Styles {
@@ -30,9 +30,8 @@
 				<th @Html.DisplayNameFor(model => model.TenSach)> Tên sách </th>
 				<th @Html.DisplayNameFor(model => model.TacGia.TenTacGia)> Tên Tác giả </th>
 				@*<th @Html.DisplayNameFor(model => model.MoTa)> Mô tả </th>*@
-				<th @Html.DisplayNameFor(model => model.DonGia)> Đơn giá </th>
 				<th @Html.DisplayNameFor(model => model.SoLuong)> Số lượng </th>
-				
+				<th @Html.DisplayNameFor(model => model.DonGia)> Đơn giá </th>
 				<th width="5%">Sửa</th>
 				<th width="5%">Xóa</th>
 			</tr>
@@ -102,7 +101,7 @@
 				},
 				{
 					targets: [6, 7],
-					className: 'text-end' // Cột 6 (Số lượng), 7(Đơn giá) canh phải.
+					className: 'text-end' // Cột 6 (Số lượng), 7(Đơn giá) canh phai
 				}
 			],
 			columns: [
@@ -140,7 +139,7 @@
 					name: 'TenSach'
 				},
 				{
-					// Cột 5: Số lượng
+					// Cột 5: Tên tác giả
 					data: 'TenTacGia',
 					name: 'TenTacGia'
 				},

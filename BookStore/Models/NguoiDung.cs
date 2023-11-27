@@ -13,8 +13,13 @@ namespace BookStore.Models
         [Required(ErrorMessage = "Họ và tên không được bỏ trống!")]
         public string HoVaTen { get; set; }
 
+		[StringLength(255)]
+		[Required(ErrorMessage = "Email không được bỏ trống")]
+		[Display(Name = "Email")]
+		public string Email { get; set; }
 
-        [StringLength(20)]
+
+		[StringLength(20)]
         [RegularExpression("[0-9]{10}", ErrorMessage = "Điện thoại phải là 10 chữ số!")]
         public string? DienThoai { get; set; }
 
@@ -46,6 +51,7 @@ namespace BookStore.Models
         public ICollection<DonHang>? DonHang { get; set; }
     }
 
+	[NotMapped]
 	public class NguoiDung_ChinhSua
 	{
 		public NguoiDung_ChinhSua()
@@ -57,6 +63,7 @@ namespace BookStore.Models
 		{
 			ID = n.ID;
 			HoVaTen = n.HoVaTen;
+			Email = n.Email;
 			DienThoai = n.DienThoai;
 			DiaChi = n.DiaChi;
 			TenDangNhap = n.TenDangNhap;
@@ -70,6 +77,11 @@ namespace BookStore.Models
 		[StringLength(100)]
 		[Required(ErrorMessage = "Họ và tên không được bỏ trống!")]
 		public string HoVaTen { get; set; }
+
+		[StringLength(255)]
+		[Required(ErrorMessage = "Email không được bỏ trống")]
+		[Display(Name = "Email")]
+		public string Email { get; set; }
 
 
 		[StringLength(20)]
