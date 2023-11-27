@@ -12,7 +12,7 @@ namespace BookStore.Logic
 		private readonly MailSettings _mailSettings;
 		public MailLogic(IOptions<MailSettings> mailSettings)
 		{
-			_mailSettings = mailSettings.Value; 
+			_mailSettings = mailSettings.Value;
 		}
 		public async Task SendEmail(MailInfo mailInfo)
 		{
