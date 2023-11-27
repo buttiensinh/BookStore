@@ -20,7 +20,7 @@ namespace BookStore.Controllers
 				return View("GioHangRong");
 			else
 			{
-				decimal tongTien = gioHangLogic.LayTongTienSanPham(); 
+				decimal tongTien = gioHangLogic.LayTongTienSanPham();
 				TempData["TongTien"] = tongTien;
 				return View(gioHang);
 			}
