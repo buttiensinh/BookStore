@@ -12,25 +12,30 @@ namespace BookStore.Models
 
 
         [Required(ErrorMessage = "Thể loại không được bỏ trống!")]
-        public int TheLoaiID { get; set; }
+		[Display(Name = "Thể Loại")]
+		public int TheLoaiID { get; set; }
 
 
         [Required(ErrorMessage = "Tên nhà xuất bản không được bỏ trống!")]
-        public int NhaSanXuatID { get; set; }
+		[Display(Name = "Nhà Xuất Bản")]
+		public int NhaSanXuatID { get; set; }
 
 		[Required(ErrorMessage = "Tên tác giả không được bỏ trống!")]
+		[Display(Name = "Tác Giả")]
 		public int TacGiaID { get; set; }
 
 
 		[StringLength(250)]
         [Required(ErrorMessage = "Tên sách không được bỏ trống!")]
-        public string TenSach { get; set; }
+		[Display(Name = "Tên Sản Phẩm")]
+		public string TenSach { get; set; }
 
 
         
         [DisplayFormat(DataFormatString = "{0:N0}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Đơn giá không được bỏ trống!")]
-        public int DonGia { get; set; }
+		[Display(Name = "Đơn Giá")]
+		public int DonGia { get; set; }
 
 
         [StringLength(255)]
@@ -49,12 +54,14 @@ namespace BookStore.Models
 
 		[DisplayFormat(DataFormatString = "{0:N0}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Số lượng không được bỏ trống!")]
-        public int SoLuong {  get; set; }
+		[Display(Name = "Số Lượng")]
+		public int SoLuong {  get; set; }
 
 
         [Column(TypeName = "ntext")]
         [DataType(DataType.MultilineText)]
-        public string? MoTa { get; set; }
+		[Display(Name = "Mô Tả")]
+		public string? MoTa { get; set; }
 
 
         public ICollection<DonHang_ChiTiet>? DonHang_ChiTiet { get; set; }
@@ -63,4 +70,14 @@ namespace BookStore.Models
 		public TacGia? TacGia { get; set; }
 
     }
+
+	[NotMapped]
+	public class PhanTrangSanPham
+	{
+		public int TrangHienTai { get; set; }
+		public int TongSoTrang { get; set; }
+		public List<Sach> Sach { get; set; }
+		public bool HasPreviousPage => TrangHienTai > 1;
+		public bool HasNextPage => TrangHienTai < TongSoTrang;
+	}
 }

@@ -59,7 +59,7 @@ namespace BookStore.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,HoVaTen,DienThoai,DiaChi,TenDangNhap,MatKhau,XacNhanMatKhau,Quyen")] NguoiDung nguoiDung)
+        public async Task<IActionResult> Create([Bind("ID,HoVaTen,Email,DienThoai,DiaChi,TenDangNhap,MatKhau,XacNhanMatKhau,Quyen")] NguoiDung nguoiDung)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace BookStore.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,HoVaTen,DienThoai,DiaChi,TenDangNhap,MatKhau,Quyen")] NguoiDung_ChinhSua nguoiDung)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,HoVaTen,Email,DienThoai,DiaChi,TenDangNhap,MatKhau,Quyen")] NguoiDung_ChinhSua nguoiDung)
         {
             if (id != nguoiDung.ID)
             {
@@ -110,7 +110,8 @@ namespace BookStore.Areas.Admin.Controllers
 					if (nguoiDung.MatKhau == null)
 					{
 						n.ID = nguoiDung.ID; 
-					n.HoVaTen = nguoiDung.HoVaTen;
+					    n.HoVaTen = nguoiDung.HoVaTen;
+                        n.Email = nguoiDung.Email;
 						n.DienThoai = nguoiDung.DienThoai;
 						n.DiaChi = nguoiDung.DiaChi;
 						n.TenDangNhap = nguoiDung.TenDangNhap;
@@ -121,6 +122,7 @@ namespace BookStore.Areas.Admin.Controllers
 					{
 						n.ID = nguoiDung.ID;
 						n.HoVaTen = nguoiDung.HoVaTen;
+						n.Email = nguoiDung.Email;
 						n.DienThoai = nguoiDung.DienThoai;
 						n.DiaChi = nguoiDung.DiaChi;
 						n.TenDangNhap = nguoiDung.TenDangNhap;

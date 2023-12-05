@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
+using BC = BCrypt.Net.BCrypt;
 
 namespace BookStore.Controllers
 {
@@ -20,11 +21,81 @@ namespace BookStore.Controllers
 			_mailLogic = mailLogic;
 		}
 		// GET: Index
-		public IActionResult Index()
+		public IActionResult Index(string? successMessage)
 		{
-			return View();
+			int maNguoiDung = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "ID")?.Value);
+			var nguoiDung = _context.NguoiDung.Where(r => r.ID == maNguoiDung).Include(s => s.DonHang).SingleOrDefault();
+			if (nguoiDung == null)
+			{
+				return NotFound();
+			}
+			int soLuongDonHang = nguoiDung.DonHang.Count();
+			TempData["SoLuongDonHang"] = soLuongDonHang;
+			if (!string.IsNullOrEmpty(successMessage))
+				TempData["ThongBao"] = successMessage;
+			return View(new NguoiDung_ChinhSua(nguoiDung));
 		}
-		// GET: DatHang
+
+		// GET: DonHangCuaToi
+		public async Task<IActionResult> DonHangCuaToi()
+		{
+			int maNguoiDung = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "ID")?.Value);
+			var datHang = _context.DonHang.Where(r => r.NguoiDungID == maNguoiDung)
+			.Include(d => d.NguoiDung)
+			.Include(d => d.TinhTrang)
+			.Include(d => d.DonHang_ChiTiet)
+			.ThenInclude(s => s.Sach);
+			return View(await datHang.ToListAsync());
+		}
+
+		// GET: CapNhatHoSo
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> CapNhatHoSo(int id, [Bind("ID,HoVaTen,Email,DienThoai,DiaChi,TenDangNhap,MatKhau,XacNhanMatKhau")] NguoiDung_ChinhSua nguoiDung)
+		{
+			if (id != nguoiDung.ID)
+			{
+				return NotFound();
+			}
+			if (ModelState.IsValid)
+			{
+			try
+				{
+					var n = _context.NguoiDung.Find(id);
+					// Giữ nguyên mật khẩu cũ
+					if (nguoiDung.MatKhau == null)
+					{
+						n.ID = nguoiDung.ID;
+						n.HoVaTen = nguoiDung.HoVaTen;
+						n.DienThoai = nguoiDung.DienThoai;
+						n.DiaChi = nguoiDung.DiaChi;
+						n.TenDangNhap = n.TenDangNhap;
+						n.XacNhanMatKhau = n.MatKhau;
+						n.Quyen = n.Quyen;
+					}
+					else // Cập nhật mật khẩu mới
+					{
+						n.ID = nguoiDung.ID;
+						n.HoVaTen = nguoiDung.HoVaTen;
+						n.DienThoai = nguoiDung.DienThoai;
+						n.DiaChi = nguoiDung.DiaChi;
+						n.TenDangNhap = n.TenDangNhap;
+						n.MatKhau = BC.HashPassword(nguoiDung.MatKhau);
+						n.XacNhanMatKhau = BC.HashPassword(nguoiDung.MatKhau);
+						n.Quyen = n.Quyen;
+					}
+					_context.Update(n);
+					await _context.SaveChangesAsync();
+				}
+				catch (Exception ex)
+				{
+					throw new Exception(ex.Message.ToString());
+				}
+				return RedirectToAction("Index", "KhachHang", new { Area = "", successMessage = "Đã cập nhật thông tin thành công." });
+			}
+			return View("Index", nguoiDung);
+		}
+	// GET: DatHang
 		public IActionResult DatHang()
 		{
 			GioHangLogic gioHangLogic = new GioHangLogic(_context);
