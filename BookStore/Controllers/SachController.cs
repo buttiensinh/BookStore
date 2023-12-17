@@ -1,6 +1,7 @@
 ﻿using BookStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SlugGenerator;
 using Slugify;
 
 namespace BookStore.Controllers
@@ -65,13 +66,13 @@ namespace BookStore.Controllers
 		}
 
 		// GET: ChiTiet
-		public IActionResult ChiTiet(string tenSanPham)
+		public IActionResult ChiTiet(string tenSach)
 		{
-			SlugHelper slug = new SlugHelper();
+		
 			var sanPham = _context.Sach
 			.Include(s => s.NhaSanXuat)
 			.Include(s => s.TheLoai)
-			.AsEnumerable().Where(r => slug.GenerateSlug(r.TenSach) == tenSanPham).SingleOrDefault();
+			.AsEnumerable().Where(r => r.TenSach.GenerateSlug() == tenSach).SingleOrDefault();
 			if (sanPham == null)
 				return NotFound();
 			else

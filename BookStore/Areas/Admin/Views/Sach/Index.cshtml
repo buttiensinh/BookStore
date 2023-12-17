@@ -23,7 +23,7 @@
 		<table id="datatable" class="table table-sm table-hover table-striped table-bordered mb-0">
 		<thead>
 			<tr>
-				<th width="5%">#</th>
+				<th @Html.DisplayNameFor(model => model.ID)>ID </th>
 				<th @Html.DisplayNameFor(model => model.AnhBia)> Ảnh bìa </th>
 				<th @Html.DisplayNameFor(model => model.TheLoai.TenTheLoai)> Tên thể loại </th>
 				<th @Html.DisplayNameFor(model => model.NhaSanXuat.TenNhaSanXuat)> Tên nhà xuất bản </th>
@@ -109,7 +109,7 @@
 					// Cột 0: STT
 					data: null,
 					name: null,
-					sortable: false, // Không cho sắp xếp
+					sortable: true, // Không cho sắp xếp
 					render: function (data, type, row, meta) {
 						return meta.row + meta.settings._iDisplayStart + 1;
 					}
@@ -158,10 +158,10 @@
 				{
 					// Cột 8: Sửa
 					data: null,
-					name: null,
+					name:null,
 					sortable: false, // Không cho sắp xếp
 					render: function (data, type, row, meta) {
-						return '<a href="/Sach/Edit/' + row.ID + '"><i class="fa-light fa-pen-to-square"></i></a>';
+						return ' <a href="/Admin/Sach/Edit/' + row.ID + '"><i class="fa-light fa-pen-to-square"></i></a>';
 					}
 				},
 				{
@@ -170,7 +170,7 @@
 					name: null,
 					sortable: false, // Không cho sắp xếp
 					render: function (data, type, row, meta) {
-						return '<a href="/Sach/Delete/' + row.ID + '"><i class="fa-light fa-trash-can text-danger"></i></a>';
+						return '<a href="/Admin/Sach/Delete/' + row.ID + '"><i class="fa-light fa-trash-can text-danger"></i></a>';
 					}
 				}
 			],
