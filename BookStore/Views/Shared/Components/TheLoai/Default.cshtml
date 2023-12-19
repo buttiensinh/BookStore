@@ -1,0 +1,13 @@
+﻿@using SlugGenerator
+@model IEnumerable<BookStore.Models.TheLoai>
+
+<li class="nav-item dropdown">
+	<a class=" nav-link dropdown-toggle" asp-area="" asp-controller="Sach" asp-action="Index" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ci-gift me-2"></i>Sản Phẩm</a>
+	<ul class="dropdown-menu">
+		@foreach (var item in Model)
+		{
+			string tenLoaiKhongDau = item.TenTheLoai.GenerateSlug();
+			<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="@tenLoaiKhongDau">@item.TenTheLoai</a></li>
+		}
+	</ul>
+</li>

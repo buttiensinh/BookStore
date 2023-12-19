@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<!-- SEO Meta Tags -->
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -25,19 +26,44 @@
 	<link rel="stylesheet" media="screen" href="~/css/theme.min.css" />
 	<link rel="stylesheet" media="screen" href="~/css/nivo-slider.css" />
 
+	<link rel="stylesheet" media="screen" href="~/css/animate.css/animate.min.css" />
+	<link rel="stylesheet" media="screen" href="~/vendor/bootstrap-icons/bootstrap-icons.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css">
+
+
+	<!-- Template Main CSS File -->
+	<link rel="stylesheet" media="screen" href="~/css/style.css" />
+
 	@await RenderSectionAsync("Styles", required: false)
 </head>
+
+<!-- ======= Top Bar ======= -->
+<section id="topbar" class="d-flex align-items-center">
+	<div class="container d-flex justify-content-center justify-content-md-between">
+		<div class="contact-info d-flex align-items-center">
+			<i class="bi bi-envelope d-flex align-items-center"><a href="mailto:nhuquynh09022002@gmai.com">contactBookStore.Com.Vn</a></i>
+			<i class="bi bi-phone d-flex align-items-center ms-4"><span>+029 333 666</span></i>
+		</div>
+		<div class="social-links d-none d-md-flex align-items-center">
+			<a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+			<a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+			<a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+			<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+		</div>
+	</div>
+</section>
+
 <body class="handheld-toolbar-enabled">
 	<main class="page-wrapper">
 		<header class="shadow-sm">
 			<div class="navbar-sticky bg-light">
 				<div class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
-						<a class="navbar-brand d-none d-sm-block flex-shrink-0" asp-area="" asp-controller="Home" asp-action="Index">
+						@*<a class="navbar-brand d-none d-sm-block flex-shrink-0" asp-area="" asp-controller="Home" asp-action="Index">
 							<img src="~/img/logo-dark.png" width="142" />
-						</a>
+						</a>*@
 						<a class="navbar-brand d-sm-none flex-shrink-0 me-2" asp-area="" asp-controller="Home" asp-action="Index">
-							<img src="~/img/logo-icon.png" width="74" />
+							<img src="~/img/B-64x64.png" width="74" />
 						</a>
 						<div class="input-group d-none d-lg-flex mx-4">
 							<input class="form-control rounded-end pe-5" type="text" placeholder="Tìm kiếm" />
@@ -87,28 +113,9 @@
 								</li>
 							</ul>
 							<ul class="navbar-nav">
-								@*	@await Component.InvokeAsync("TheLoai")*@
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" asp-area="" asp-controller="Sach" asp-action="Index" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ci-gift me-2"></i>Sản phẩm</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tai-chinh-ke-toan">Tài chính - Kế toán</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tu-duy-ky-nang-song">Tư duy - Kỹ năng sống</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="ky-nang-lam-viec">Kỹ năng làm việc</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tieu-thuyet">Tiểu thuyết</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach-khoi-nghiep">Sách Khởi Nghiệp</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="kien-thuc-bach-khoa">Kiến thức bách khoa</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="y-hoc">Y học</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="truyen-tranh-ehon">Truyện tranh EHon</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="marketing">Marketing</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="lap-trinh">Lập trình</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach-tham-khao">Sách tham khảo</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach-giao-khoa">Sách giáo khoa</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="ky-nang-lam-viec">Sách Kỹ năng làm việc</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="lich-su-viet-nam">Lịch sử Việt Nam</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tai-chinh-kinh-te">Tài chính - Kinh tế</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="dien-anh">Điện Ảnh</a></li>
-									</ul>
-								</li>
+
+								@await Component.InvokeAsync("TheLoai")
+
 								<li class="nav-item">
 									<a class="nav-link" asp-area="" asp-controller="BaiViet" asp-action="Index"><i class="ci-globe me-2"></i>Tin tức</a>
 								</li>
@@ -176,14 +183,10 @@
 	<script src="~/vendor/drift-zoom/Drift.min.js"></script>
 	<script src="~/js/theme.min.js"></script>
 	
-	<script src="~/js/jquery.nivo.slider.js"></script>
-	<script src="~/js/jquery.nivo.slider.pack.js"></script>
+	<!-- Template Main JS File -->
+	<script src="~/js/main.js"></script>
 
 	@await RenderSectionAsync("Scripts", required: false)
-	@*<script type="text/javascript">
-		$(windown).load(function (){
-			$('#slider').nivoSlider();
-		});
-	</script>*@
+	
 </body>
 </html>

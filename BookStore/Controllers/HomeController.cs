@@ -19,6 +19,7 @@ namespace BookStore.Controllers
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+		//thu
 		// GET: Index
 		public async Task<IActionResult> Index()
 		{
@@ -35,6 +36,7 @@ namespace BookStore.Controllers
 				TempData["ThongBao"] = successMessage;
 			return View();
 		}
+//<<<<<<< HEAD
 		// POST: Register
 		[HttpPost]
 		[AllowAnonymous]
@@ -61,6 +63,9 @@ namespace BookStore.Controllers
 			return View(nguoiDung);
 		}
 
+//=======
+		///
+//>>>>>>> 3a8fa7151fb6c2883b22d16d65aff7049387a326
 		// GET: Login
 		[AllowAnonymous]
 		public IActionResult Login(string? ReturnUrl)

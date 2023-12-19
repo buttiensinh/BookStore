@@ -1,41 +1,124 @@
 ﻿@model IEnumerable<BookStore.Models.TheLoai>
+@using SlugGenerator;
 @using Slugify;
 
 @{
 	ViewData["Title"] = "Trang chủ";
 }
-<section class="container mt-4 mb-grid-gutter">
-	<div class="bg-faded-info rounded-3 py-4">
-		<div class="row align-items-center">
-			<div class="col-md-5">
-				<div class="px-4 pe-sm-0 ps-sm-5">
-					<span class="badge bg-danger">Khuyến mãi đặc biệt</span>
-					<h3 class="mt-4 mb-1 text-body fw-light">Sản phẩm mới 100%</h3>
-					<h2 class="mb-1">BookStore Tốt & Nhanh </h2>
-					<p class="h5 text-body fw-light">Số lượng sản phẩm có hạn!</p>
-					<a class="btn btn-accent" href="#">Xem chi tiết<i class="ci-arrow-right fs-ms ms-1"></i></a>
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+	<div class="hero-container">
+		<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+			<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+			<div class="carousel-inner" role="listbox">
+
+				<!-- Slide 1 -->
+				<div class="carousel-item active" style="background-image: url(img/slide-1.jpg)">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated animate__fadeInDown">Welcome to <span>Eterna</span></h2>
+							<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+							<a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-7">
-				<img src="~/img/panner.jpg" /> 
-			</div>
-			@*<div class="col-md-7">
-				<div id="slider" class="nivoSlider">
-					<img src="~/img/panner.jpg" />
-					<img src="~/img/paner1.jpg" />
-					<img src="~/img/paner2.jpg" />
-					<img src="~/img/paner3.jpg" />
+
+				<!-- Slide 2 -->
+				<div class="carousel-item" style="background-image: url(img/slide-2.jpg)">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated fanimate__adeInDown">Lorem <span>Ipsum Dolor</span></h2>
+							<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+							<a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+						</div>
+					</div>
 				</div>
-			<div id="htmlcaption" class="nivo-html-caption">
-				<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#" >a link</a>.
+
+				<!-- Slide 3 -->
+				<div class="carousel-item" style="background-image: url(img/slide-3.jpg)">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated animate__fadeInDown">Sequi ea <span>Dime Lara</span></h2>
+							<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+							<a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+						</div>
+					</div>
+				</div>
+
 			</div>
-			</div>*@
+
+			<a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+			</a>
+
+			<a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+				<span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+			</a>
+
 		</div>
 	</div>
-</section>
+</section><!-- End Hero -->
+
+<div class="smoke">
+	<div class="container" id="fh5co-pricing">
+		<div class="heading animate-box"><h2><b>Sản Phẩm Nổi Bật</b></h2></div>
+		<div class="text-center animate-box"><h3>Khuyến mãi trong tháng</h3></div>
+		<br><br>
+		<div class="row">
+			<div class="col-sm-4 animate-box" data-animate-effect="fadeInLeft">
+				<div class="price-box">
+					<h3><b>BASIC PLAN</b></h3>
+					<h2 class="text-org"><b>$4.99</b></h2>
+					<h3><b>PER MONTH</b></h3>
+					<div class="gr-line"></div>
+					<div>50 GB DISK SPACE</div>
+					<div class="gr-line"></div>
+					<div>100 GB BANDWIDTH</div>
+					<div class="gr-line"></div>
+					<div>FREE DOMAIN REGISTRATION</div>
+					<br>
+					<button class="btn btn-banner">GET STARTED</button>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="price-box-dark animate-box">
+					<h3><b>BASIC PLAN</b></h3>
+					<h2 class="text-gr"><b>$4.99</b></h2>
+					<h3><b>PER MONTH</b></h3>
+					<div class="gr-line"></div>
+					<div>50 GB DISK SPACE</div>
+					<div class="gr-line"></div>
+					<div>100 GB BANDWIDTH</div>
+					<div class="gr-line"></div>
+					<div>FREE DOMAIN REGISTRATION</div>
+					<br>
+					<button class="btn btn-banner">GET STARTED</button>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="price-box animate-box" data-animate-effect="fadeInRight">
+					<h3><b>BASIC PLAN</b></h3>
+					<h2 class="text-org"><b>$4.99</b></h2>
+					<h3><b>PER MONTH</b></h3>
+					<div class="gr-line"></div>
+					<div>50 GB DISK SPACE</div>
+					<div class="gr-line"></div>
+					<div>100 GB BANDWIDTH</div>
+					<div class="gr-line"></div>
+					<div>FREE DOMAIN REGISTRATION</div>
+					<br>
+					<button class="btn btn-banner">GET STARTED</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <section class="container">
 	<div class="tns-carousel border-end">
-		<div class="tns-carousel-inner" data-carousel-options="{ &quot;nav&quot;: false, &quot;controls&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;loop&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2},&quot;600&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
+		@*@<div class="tns-carousel-inner" data-carousel-options="{ &quot;nav&quot;: false, &quot;controls&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;loop&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2},&quot;600&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
 			<div>
 				<a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right:-.0625rem;">
 					<img class="d-block mx-auto" src="~/img/brands/13.png" style="width:165px;" />
@@ -76,7 +159,7 @@
 					<img class="d-block mx-auto" src="~/img/brands/20.png" style="width:165px;" />
 				</a>
 			</div>
-		</div>
+		</div>*@
 	</div>
 </section>
 @foreach (var item in Model)
@@ -100,16 +183,16 @@
 				<div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
 					<div class="card product-card">
 						@{
-							SlugHelper slugTenSanPham = new SlugHelper();
-							string tenSanPhamKhongDau = slugTenSanPham.GenerateSlug(sanPham.TenSach);
+
+							string tenSanPhamKhongDau = sanPham.TenSach.GenerateSlug();
 						}
-						<a class="card-img-top d-block overflow-hidden" asp-area="" asp-controller="SanPham" asp-action="ChiTiet" asp-route-tenSanPham="@tenSanPhamKhongDau">
+						<a class="card-img-top d-block overflow-hidden" asp-area="" asp-controller="Sach" asp-action="ChiTiet" asp-route-tenSach="@tenSanPhamKhongDau">
 							<img src="~/uploads/@sanPham.AnhBia" />
 						</a>
 						<div class="card-body py-2">
-							<a class="product-meta d-block fs-xs pb-1" href="#">@item.TenTheLoai</a>
+							<a class="product-meta d-block fs-xs pb-1" href="#">@sanPham.TheLoai.TenTheLoai</a>
 							<h3 class="product-title fs-sm">
-								<a asp-area="" asp-controller="SanPham" asp-action="ChiTiet" asp-route-tenSanPham="@tenSanPhamKhongDau">@sanPham.TenSach</a>
+								<a asp-area="" asp-controller="Sach" asp-action="ChiTiet" asp-route-tenSach="@tenSanPhamKhongDau" asp-route-tenLoai="@tenLoaiKhongDau">@sanPham.TenSach</a>
 							</h3>
 							<div class="d-flex justify-content-between">
 								<div class="product-price">
