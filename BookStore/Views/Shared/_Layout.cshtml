@@ -87,12 +87,26 @@
 								</li>
 							</ul>
 							<ul class="navbar-nav">
+								@*	@await Component.InvokeAsync("TheLoai")*@
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" asp-area="" asp-controller="Sach" asp-action="Index" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ci-gift me-2"></i>Sản phẩm</a>
 									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach">Sách</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="but">Bút</a></li>
-										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="dung-cu">Dụng cụ</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tai-chinh-ke-toan">Tài chính - Kế toán</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tu-duy-ky-nang-song">Tư duy - Kỹ năng sống</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="ky-nang-lam-viec">Kỹ năng làm việc</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tieu-thuyet">Tiểu thuyết</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach-khoi-nghiep">Sách Khởi Nghiệp</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="kien-thuc-bach-khoa">Kiến thức bách khoa</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="y-hoc">Y học</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="truyen-tranh-ehon">Truyện tranh EHon</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="marketing">Marketing</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="lap-trinh">Lập trình</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach-tham-khao">Sách tham khảo</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="sach-giao-khoa">Sách giáo khoa</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="ky-nang-lam-viec">Sách Kỹ năng làm việc</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="lich-su-viet-nam">Lịch sử Việt Nam</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="tai-chinh-kinh-te">Tài chính - Kinh tế</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Sach" asp-action="PhanLoai" asp-route-tenLoai="dien-anh">Điện Ảnh</a></li>
 									</ul>
 								</li>
 								<li class="nav-item">
